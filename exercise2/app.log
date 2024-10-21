@@ -1,0 +1,11 @@
+2024-10-18 22:27:01,570 - my_logger - ERROR - student1s.txt not found
+2024-10-18 22:27:01,571 - my_logger - INFO - student1s.txt close
+2024-10-18 22:27:29,489 - my_logger - ERROR - student1s.txt not found
+2024-10-18 22:28:07,170 - my_logger - ERROR - student1s.txt not found
+2024-10-18 22:28:07,170 - my_logger - INFO - file close
+2024-10-18 22:28:07,171 - my_logger - INFO - file close
+2024-10-18 22:28:34,314 - my_logger - ERROR - student1s.txt not found
+2024-10-18 22:28:41,033 - my_logger - INFO - file close
+2024-10-18 22:28:41,033 - my_logger - INFO - file close
+2024-10-20 22:10:16,002 - my_logger - INFO - file close
+2024-10-20 22:10:16,003 - my_logger - INFO - file close
