@@ -20,4 +20,23 @@ def read_file(filename):
     except Exception as err:
         logging.error(f'{err}')
 
-print(read_file('synonyms.txt'))
+
+def  get_synonyms(word, filename):
+    synonyms_dict = read_file(filename)
+    logging.info(f'Введено слово - {word}')
+    if word in synonyms_dict.keys():
+        result = f'{word} - '
+        for i in range(0, len(synonyms_dict[word])):
+            result += f'{i+1}). {synonyms_dict[word][i]}, '
+        result = result[:-2] + '.'
+        print(result)
+    else:
+        answer = "Указанного слова нет в словаре"
+        print(answer)
+        logging.info(answer)
+
+def get_word():
+    word = input("Введите слово").lower()
+    get_synonyms(word, 'synonyms.txt')
+
+get_word()
