@@ -63,6 +63,5 @@ def top_students(score, filename):
         my_log.error(f"file IOError")
     finally:
         my_log.info(f"file close")
-        my_log.info(f"file close")
 
 top_students(4,'students.txt' )
