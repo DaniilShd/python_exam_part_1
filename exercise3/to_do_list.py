@@ -1,6 +1,7 @@
 import logging
 import sys
 
+#Настройка логирования
 FORMATTER_STRING = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 FORMATTER = logging.Formatter(FORMATTER_STRING)
 LOG_FILE = "app.log"
@@ -21,6 +22,7 @@ def get_logger(logger_name):
 
 my_log = get_logger("my_logger")
 
+#Создается список задач и файл для записи
 def create_task_list():
     tasks_list = []
     try:
@@ -30,7 +32,7 @@ def create_task_list():
         my_log.error(err)
     return tasks_list
 
-
+#Функция для вставки задачи в список (с обновлением файла)
 def insert_task(new_task, tasks_list):
     try:
         with open('tasks.txt', 'a', encoding='utf-8') as file:
@@ -41,6 +43,7 @@ def insert_task(new_task, tasks_list):
         my_log.error(err)
     tasks_list.append(new_task)
 
+#Функция для удаления задачи из списка (с обновлением файла)
 def delete_task(number_task_to_delete, tasks_list):
     tasks_list.pop(number_task_to_delete-1)
     try:
@@ -60,6 +63,7 @@ def get_number_task_to_delete(tasks_list):
         print("Вы ввели неверное значение")
         return 0
 
+#Функция с бесконечным циклом для управления списка задач
 def to_do_list():
     tasks_list = create_task_list()
     while True:
@@ -84,4 +88,5 @@ def to_do_list():
             for number in range(0, len(tasks_list)):
                 print(f"{number+1}) {tasks_list[number]}")
 
+#Стартовая функция
 to_do_list()

@@ -1,7 +1,9 @@
 import logging
 
+#Настройка логирования
 logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='w', encoding='utf-8', format='%(levelname)s: %(message)s')
 
+#Чтение файла используя try, вывод данных файла в виде словаря (кдлюч - слово, значения - синонимы)
 def read_file(filename):
     synonyms_dict = dict()
     try:
@@ -20,7 +22,7 @@ def read_file(filename):
     except Exception as err:
         logging.error(f'{err}')
 
-
+#Нахождение синонимов по ключу в словаре
 def  get_synonyms(word, filename):
     synonyms_dict = read_file(filename)
     logging.info(f'Введено слово - {word}')
@@ -35,8 +37,10 @@ def  get_synonyms(word, filename):
         print(answer)
         logging.info(answer)
 
+#Ввод целевого слова и подбор синонимов
 def get_word():
     word = input("Введите слово").lower()
     get_synonyms(word, 'synonyms.txt')
 
+#Запуск скрипта
 get_word()

@@ -2,6 +2,7 @@ import logging
 import sys
 import csv
 
+#Настройка логирования
 FORMATTER_STRING = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 FORMATTER = logging.Formatter(FORMATTER_STRING)
 LOG_FILE = "app.log"
@@ -22,7 +23,7 @@ def get_logger(logger_name):
 
 my_log = get_logger("my_logger")
 
-
+#Чтение файла, возвращает список данных
 def read_file(name):
     try:
         with open(name, 'r', encoding='utf-8') as file:
@@ -40,6 +41,7 @@ def read_file(name):
     finally:
         my_log.info(f"{name} end read file")
 
+# Функция для подсчета общей суммы и суммы по строкам
 def amount_of_item(data_list):
     total = 0
     result_amount_of_item = dict()
@@ -51,6 +53,7 @@ def amount_of_item(data_list):
         result_amount_of_item[item[0]] = [quantity, amount, price]
     return total, result_amount_of_item
 
+#Вывод результата и оформление в файл csv
 def output_result(name, max_total):
     data = read_file(name)
     total, result_amount_of_item = amount_of_item(data)

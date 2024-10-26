@@ -1,7 +1,9 @@
 import logging
 
+#Настройка логирования
 logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='w', format='%(levelname)s: %(message)s')
 
+#Чтение файла используя try, вывод данных файла в виде словаря
 def read_file(filename):
     data_of_employees = dict()
     try:
@@ -22,7 +24,7 @@ def read_file(filename):
     except Exception as err:
         logging.error(f'Exception - {err}')
 
-
+#Определение средней зарплаты каждого работника
 def average_salary(data_employees_salary):
     total_salary = 0
     for list_info in data_employees_salary.values():
@@ -34,6 +36,8 @@ def average_salary(data_employees_salary):
     except ZeroDivisionError as err:
         logging.error(err)
 
+#Выполнение фиьльтрации списка сотрудников - сравнивается зарплата каждого сотрудника
+# со средней зарплатой всех сотрудников
 def filter_employees(data_list_employees):
     aver_salary = average_salary(data_list_employees)
     list_of_high_earners = []
@@ -42,6 +46,7 @@ def filter_employees(data_list_employees):
             list_of_high_earners.append(employee)
     return list_of_high_earners
 
+#Зпапись результата в файл
 def write_to_high_earners(list_of_high_earners, data_dict_employees):
     try:
         with open('high_earners.txt', 'w', encoding='utf-8') as file:
@@ -51,11 +56,12 @@ def write_to_high_earners(list_of_high_earners, data_dict_employees):
     except Exception as err:
         logging.error(f"{err}")
 
-
+#Стартовая функция
 def start():
     data_dict_employees = read_file('employees.txt')
     list_of_high_earners = filter_employees(data_dict_employees)
     write_to_high_earners(list_of_high_earners, data_dict_employees)
 
+#Запуск скрипта
 start()
 

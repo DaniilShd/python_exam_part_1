@@ -1,6 +1,7 @@
 import logging
 import sys
 
+#Настройка логирования
 FORMATTER_STRING = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 FORMATTER = logging.Formatter(FORMATTER_STRING)
 LOG_FILE = "app.log"
@@ -21,7 +22,7 @@ def get_logger(logger_name):
 
 my_log = get_logger("my_logger")
 
-
+#Открытие исходного файла, возвращает словарь ключ - имя студента, значения - оценки
 def open_file(name):
     result_dict = {}
     try:
@@ -40,6 +41,7 @@ def open_file(name):
     except IOError:
         my_log.error(f"{name} IOError")
 
+#Определение списка студентов со средней оценкой выше заданного исходного значения
 def student_of_score(students, score):
     result = []
     for name_student, value in students.items():
@@ -53,7 +55,7 @@ def student_of_score(students, score):
             result.append(name_student)
     return result
 
-
+#Вывод в файл результата - список студентов с средней оценкой выше заданной
 def top_students(score, filename):
     students = student_of_score(open_file(filename), score)
     try:
